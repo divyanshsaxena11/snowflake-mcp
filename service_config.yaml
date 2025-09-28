@@ -1,0 +1,30 @@
+# Snowflake Cortex AI Services Configuration
+# This file defines the Cortex services available to the MCP server
+
+cortex_complete:
+  default_model: "snowflake-llama-3.3-70b"
+  # Available models: snowflake-llama-3.3-70b, snowflake-llama-3.1-8b, snowflake-llama-3.1-70b
+  # Additional models can be added as they become available
+
+search_services:
+  - service_name: "customer_support_search"
+    description: "Search service that indexes customer support transcripts and documentation"
+    database_name: "SUPPORT_DB"
+    schema_name: "SERVICES"
+  
+  - service_name: "product_catalog_search"
+    description: "Search service for product catalog and specifications"
+    database_name: "PRODUCT_DB"
+    schema_name: "CATALOG"
+
+analyst_services:
+  - service_name: "sales_analyst"
+    semantic_model: "@SALES_DB.ANALYTICS.SEMANTIC_MODELS/sales_semantic_model.yaml"
+    description: "Analyst service that provides natural language querying over sales data"
+  
+  - service_name: "customer_analyst"
+    semantic_model: "@CUSTOMER_DB.ANALYTICS.SEMANTIC_MODELS/customer_semantic_model.yaml"
+    description: "Analyst service for customer data analysis and insights"
+
+# Note: Replace the above service names, database names, schema names, and semantic model paths
+# with your actual Snowflake Cortex service configurations
